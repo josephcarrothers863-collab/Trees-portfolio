@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TREES | ENGINEERING NODE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#05070d;
+    --panel:rgba(255,255,255,0.04);
+    --neon:#00fff0;
+    --pink:#ff2bd6;
+    --purple:#7a5cff;
+    --text:#d7e2ff;
+    --warn:#ffcc00;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Inter;
+    background:radial-gradient(circle at top,#0b1020,#05070d);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* CYBER GRID */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        linear-gradient(rgba(0,255,240,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size:70px 70px;
+    animation:gridMove 18s linear infinite;
+    z-index:-2;
+}
+
+@keyframes gridMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(70px);}
+}
+
+/* SCANLINES */
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    pointer-events:none;
+    z-index:-1;
+    opacity:0.4;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 8%;
+    position:fixed;
+    width:100%;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.5);
+    border-bottom:1px solid rgba(0,255,240,0.2);
+    z-index:1000;
+}
+
+.logo{
+    font-family:Orbitron;
+    color:var(--neon);
+    letter-spacing:3px;
+    font-weight:800;
+}
+
+nav a{
+    color:var(--text);
+    margin-left:20px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--neon);
+    text-shadow:0 0 10px var(--neon);
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 10%;
+}
+
+.glitch{
+    font-family:Orbitron;
+    font-size:3.5rem;
+    position:relative;
+    color:var(--neon);
+    animation:flicker 3s infinite;
+}
+
+@keyframes flicker{
+    0%,100%{opacity:1;}
+    50%{opacity:0.85;}
+}
+
+.hero p{
+    max-width:700px;
+    margin-top:20px;
+    color:#b9c7ff;
+}
+
+/* BUTTONS */
+.btn{
+    margin-top:25px;
+    padding:12px 22px;
+    border:1px solid var(--neon);
+    background:transparent;
+    color:var(--neon);
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:var(--neon);
+    color:black;
+    box-shadow:0 0 25px var(--neon);
+}
+
+.btn-secondary{
+    border:1px solid var(--purple);
+    color:var(--purple);
+}
+
+.btn-secondary:hover{
+    background:var(--purple);
+    color:white;
+    box-shadow:0 0 25px var(--purple);
+}
+
+/* SECTIONS */
+section{
+    padding:100px 8%;
+}
+
+.title{
+    font-family:Orbitron;
+    font-size:2rem;
+    margin-bottom:30px;
+    color:var(--pink);
+    text-shadow:0 0 10px var(--pink);
+}
+
+/* ENGINEERING DASHBOARD PANELS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.panel{
+    background:var(--panel);
+    border:1px solid rgba(0,255,240,0.15);
+    padding:20px;
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.panel::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,transparent,rgba(0,255,240,0.08),transparent);
+    transition:0.6s;
+}
+
+.panel:hover::before{
+    left:120%;
+}
+
+.panel:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 20px rgba(0,255,240,0.15);
+}
+
+/* STATUS TAGS */
+.tag{
+    display:inline-block;
+    padding:4px 8px;
+    font-size:12px;
+    border:1px solid var(--neon);
+    color:var(--neon);
+    margin-bottom:10px;
+}
+
+/* CV SECTION */
+.cv-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid rgba(255,255,255,0.1);
+    color:#6f7aa8;
+    margin-top:50px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">TREES://ENGINEERING_NODE</div>
+    <div>
+        <a href="#about">ABOUT</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="glitch">TREES</div>
+    <p>
+        Sixth Form Student • Aspiring Engineer • Game Developer • Computer Science Enthusiast  
+        <br><br>
+        SYSTEM STATUS: BUILDING FUTURE STRUCTURES... DIGITAL + PHYSICAL ENGINEERING LAYER ACTIVE
+    </p>
+
+    <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
+        <button class="btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+            Enter System
+        </button>
+
+        <a class="btn btn-secondary" href="cv.pdf" download>
+            Download CV
+        </a>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="title">ABOUT SYSTEM</div>
+
+    <div class="panel">
+        I am a sixth form student specialising in Computer Science, with strong interest in engineering systems, 
+        architecture, and game development. My goal is to merge computational logic with structural design and interactive systems.
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="title">PROJECT DATABASE</div>
+
+    <div class="grid">
+
+        <div class="panel">
+            <div class="tag">ENGINEERING</div>
+            <h3>Mechanical Systems</h3>
+            <p>Exploration of forces, structures, and real-world engineering simulations.</p>
+        </div>
+
+        <div class="panel">
+            <div class="tag">ARCHITECTURE</div>
+            <h3>Futuristic Structures</h3>
+            <p>Concept designs inspired by cyberpunk cities and functional modern architecture.</p>
+        </div>
+
+        <div class="panel">
+            <div class="tag">COMPUTER SCIENCE</div>
+            <h3>Algorithms & Systems</h3>
+            <p>Problem-solving, coding experiments, and computational logic systems.</p>
+        </div>
+
+        <div class="panel">
+            <div class="tag">GAME DEV</div>
+            <h3>Interactive Worlds</h3>
+            <p>Game mechanics, prototypes, and immersive digital environments.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+    <div class="title">USER PROFILE EXPORT</div>
+
+    <div class="cv-box panel">
+        <p>Download full CV to access complete academic + project history.</p>
+
+        <a class="btn" href="cv.pdf" download>
+            DOWNLOAD CV
+        </a>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="title">CONTACT NODE</div>
+
+    <div class="panel">
+        <p>Email: trees.dev@example.com</p>
+        <p>GitHub: github.com/trees</p>
+        <p>LinkedIn: linkedin.com/in/trees</p>
+    </div>
+</section>
+
+<footer>
+    TREES SYSTEM ONLINE // CYBER ENGINEERING PORTFOLIO v2
+</footer>
+
+</body>
+</html>
