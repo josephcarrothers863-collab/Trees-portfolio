@@ -284,11 +284,14 @@ cursor{
         transform:scale(0);
     }
 }
+
+
 </style>
 </head>
 <div id="cursor"></div>
 
 <script>
+
 document.addEventListener("mousemove", e => {
 
     const dot = document.createElement("div");
@@ -305,8 +308,32 @@ document.addEventListener("mousemove", e => {
     }, 500);
 
 });
-</script>
 
+
+</script>
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealPanels(){
+
+    reveals.forEach(panel => {
+
+        const top = panel.getBoundingClientRect().top;
+
+        const trigger =
+            window.innerHeight - 100;
+
+        if(top < trigger){
+            panel.classList.add("active");
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll", revealPanels);
+revealPanels();
+</script>
 <body>
 
 <nav>
@@ -356,25 +383,25 @@ document.addEventListener("mousemove", e => {
 
     <div class="grid">
 
-        <div class="panel">
+        <div class="panel reveal">
             <div class="tag">ENGINEERING</div>
             <h3>Engineering Systems</h3>
             <p>How the modern world operates and expanding upon my passion.</p>
         </div>
 
-        <div class="panel">
+        <div class="panel reveal">
             <div class="tag">ARCHITECTURE</div>
             <h3>structure and building design</h3>
             <p>Concept designs based on my visions of what different problems require with the solutions through my eyes.</p>
         </div>
 
-        <div class="panel">
+        <div class="panel reveal">
             <div class="tag">COMPUTER SCIENCE</div>
             <h3>Algorithms & network systems </h3>
             <p>Problem-solving, coding experiments, and computational logic systems.</p>
         </div>
 
-        <div class="panel">
+        <div class="panel reveal">
             <div class="tag">GAME DEV</div>
             <h3>Interactive Worlds</h3>
             <p>Game mechanics, prototypes, and immersive digital environments.</p>
@@ -400,7 +427,7 @@ document.addEventListener("mousemove", e => {
 <section id="contact">
     <div class="title">CONTACT NODE</div>
 
-    <div class="panel">
+    <div class="panel reveal">
         <p>Email: trees.dev@example.com</p>
         <p>GitHub: github.com/trees</p>
         <p>LinkedIn: linkedin.com/in/trees</p>
